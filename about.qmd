@@ -1,0 +1,9 @@
+---
+title: "R 기초"
+image: R_logo.png
+about:
+  template: jolla
+
+---
+
+화이팅~

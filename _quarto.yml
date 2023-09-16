@@ -1,0 +1,19 @@
+project:
+  type: website
+
+website:
+  title: "R 기초"
+  navbar:
+    background: '#165caa'
+    style: "docked"
+    right:
+      - about.qmd
+      
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual
+
