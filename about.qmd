@@ -1,6 +1,14 @@
 ---
-title: "Sungil Park"
+title: "contact"
 image: R_logo.png
+about:
+  template: jolla
 ---
 
--   sungileo\@naver.com
+화이팅
+
+-   `20191534`  `박성일`
+
+-   `010 9811 4050`
+
+-   `sungileo@naver.com`
