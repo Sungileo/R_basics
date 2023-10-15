@@ -3,9 +3,9 @@ project:
   output-dir: docs
 
 website:
-  title: "R 기초"
+  title: "금융데이터분석"
   navbar:
-    background: '#165caa'
+    background: '#6D1414'
     style: "docked"
     right:
       - about.qmd

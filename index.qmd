@@ -1,5 +1,5 @@
 ---
-title: "2023-2학기 R 기초 튜터링"
+title: "금융데이터분석_R"
 listing:
   contents: posts
   sort: "date desc"
@@ -13,5 +13,3 @@ listing:
 page-layout: full
 title-block-banner: true
 ---
-
-
