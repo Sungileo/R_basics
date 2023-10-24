@@ -1,0 +1,78 @@
+---
+title: "PT.4 - 데이터 불러오기, 저장하기"
+description: "2023-2학기 튜터링"
+author: "Sungil Park"
+date: "2023/10/24"
+---
+
+```{r, include=FALSE}
+rm(list = ls())
+library(dplyr)
+library(knitr)
+```
+
+## 데이터 저장
+
+`airquality` : R 기본 데이터셋
+
+`airquality_data`라는 변수명에 할당 후 저장하기
+
+`write.csv()`함수 사용 저장
+
+**row.names**
+
+  - TRUE : 첫째 열(1,2,3,4...) 값을 포함해서 저장, `X`라는 열이 포함되는걸 볼 수 있음
+
+```{r}
+airquality_data <- airquality
+
+write.csv(airquality_data, file = "airquality_new.csv")
+```
+
+```{r, echo=FALSE}
+read.csv("airquality_new.csv") %>% head() %>% kable()
+```
+
+  
+  - FALSE : 포함 안하고 저장
+
+
+```{r}
+write.csv(airquality_data, file = "airquality_new.csv", row.names = FALSE)
+```
+
+```{r, echo=FALSE}
+read.csv("airquality_new_1.csv") %>% head() %>% kable()
+```
+
+## 데이터 불러오기
+
+`read.csv()`함수를 통해 읽어옴
+ 
+데이터 불러오기가 안되면 
+  
+  - 경로를 잘못 입력했거나
+  
+  - `/` `\` 슬래시의 방향이 반대거나
+  
+  - 인코딩을 바꾸어보면 된다.
+ 
+ 
+
+주요 인코딩
+
+ - utf-8
+ 
+ - cp949    (한글)
+ 
+ - euc-kr   (한글)
+
+```{r, eval=FALSE}
+read.csv("경로", fileEncoding = "인코딩")
+```
+
+```{r}
+data <- read.csv("airquality_new.csv")
+
+head(data)
+```

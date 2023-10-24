@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "2023-2학기 R 기초 튜터링",
     "section": "",
-    "text": "PT.3 - 데이터프레임, subset, 행렬의 연산\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nOct 17, 2023\n\n\nSungil Park\n\n\n\n\n\n\n  \n\n\n\n\nPT.2 - 벡터, 리스트, 팩터, 행렬\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nOct 10, 2023\n\n\nSungil Park\n\n\n\n\n\n\n  \n\n\n\n\nPT.1 - 설치 & R에 대해\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nSep 14, 2023\n\n\nSungil Park\n\n\n\n\n\n\nNo matching items"
+    "text": "PT.4 - 데이터 불러오기, 저장하기\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nOct 24, 2023\n\n\nSungil Park\n\n\n\n\n\n\n  \n\n\n\n\nPT.3 - 데이터프레임, subset, 행렬의 연산\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nOct 17, 2023\n\n\nSungil Park\n\n\n\n\n\n\n  \n\n\n\n\nPT.2 - 벡터, 리스트, 팩터, 행렬\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nOct 10, 2023\n\n\nSungil Park\n\n\n\n\n\n\n  \n\n\n\n\nPT.1 - 설치 & R에 대해\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nSep 14, 2023\n\n\nSungil Park\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -117,5 +117,33 @@
     "title": "PT.3 - 데이터프레임, subset, 행렬의 연산",
     "section": "데이터의 구조",
     "text": "데이터의 구조\nstate.x77은 R 에서 기본제공하는 미국 주별 정보를 담고 있는 행렬 데이터셋이다.\n\nclass()\nclass()함수는 데이터의 자료구조를 확인하는 함수이다.\n\nclass(iris)               # iris 데이터셋의 자료구조 확인  \n\n[1] \"data.frame\"\n\nclass(state.x77)          # state.x77 데이터셋의 자료구조 확인 # \"matrix\"는 내용을 담고있는 행렬, \"array\"는 열 이름을 담고있음\n\n[1] \"matrix\" \"array\" \n\n\nis.matrix(),is.data.frame()함수는 데이터셋이 행렬(matrix)인지, 데이터프레임인지를 TRUE,FALSE값으로 출력하는 함수이다.\n\nis.matrix(iris)           # 데이터셋이 매트릭스인지를 확인하는 함수\n\n[1] FALSE\n\nis.data.frame(iris)       # 데이터셋이 데이터프레임인지를 확인하는 함수   \n\n[1] TRUE\n\nis.matrix(state.x77)\n\n[1] TRUE\n\nis.data.frame(state.x77)\n\n[1] FALSE\n\n\ndata.frame()함수를 통해 행렬을 데이터프레임으로 변환\n\nst &lt;- data.frame(state.x77)\nhead(st)\n\n           Population Income Illiteracy Life.Exp Murder HS.Grad Frost   Area\nAlabama          3615   3624        2.1    69.05   15.1    41.3    20  50708\nAlaska            365   6315        1.5    69.31   11.3    66.7   152 566432\nArizona          2212   4530        1.8    70.55    7.8    58.1    15 113417\nArkansas         2110   3378        1.9    70.66   10.1    39.9    65  51945\nCalifornia      21198   5114        1.1    71.71   10.3    62.6    20 156361\nColorado         2541   4884        0.7    72.06    6.8    63.9   166 103766\n\nclass(st)\n\n[1] \"data.frame\"\n\n\nas.matrix()를 통해 데이터프레임을 행렬로 변환\n\niris.m&lt;- as.matrix(iris[,-5])\nhead(iris.m)\n\n     Sepal.Length Sepal.Width Petal.Length Petal.Width\n[1,]          5.1         3.5          1.4         0.2\n[2,]          4.9         3.0          1.4         0.2\n[3,]          4.7         3.2          1.3         0.2\n[4,]          4.6         3.1          1.5         0.2\n[5,]          5.0         3.6          1.4         0.2\n[6,]          5.4         3.9          1.7         0.4\n\nclass(iris.m) # \"matrix\"는 내용을 담고있는 행렬, \"array\"는 열 이름을 담고있음\n\n[1] \"matrix\" \"array\" \n\n\nt()함수는 행렬의 행과 열을 바꾼다. (Transpose)\n\nz &lt;- matrix(1:20, nrow=4, ncol=5)\nz\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    5    9   13   17\n[2,]    2    6   10   14   18\n[3,]    3    7   11   15   19\n[4,]    4    8   12   16   20\n\nt(z)\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    2    3    4\n[2,]    5    6    7    8\n[3,]    9   10   11   12\n[4,]   13   14   15   16\n[5,]   17   18   19   20"
+  },
+  {
+    "objectID": "posts/1024_pt4.html",
+    "href": "posts/1024_pt4.html",
+    "title": "PT.4 - 데이터 불러오기, 저장하기",
+    "section": "",
+    "text": "airquality : R 기본 데이터셋\nairquality_data라는 변수명에 할당 후 저장하기\nwrite.csv()함수 사용 저장\nrow.names\n\nTRUE : 첫째 열(1,2,3,4…) 값을 포함해서 저장, X라는 열이 포함되는걸 볼 수 있음\n\n\nairquality_data &lt;- airquality\n\nwrite.csv(airquality_data, file = \"airquality_new.csv\")\n\n\n\n\n\n\nX\nOzone\nSolar.R\nWind\nTemp\nMonth\nDay\n\n\n\n\n1\n41\n190\n7.4\n67\n5\n1\n\n\n2\n36\n118\n8.0\n72\n5\n2\n\n\n3\n12\n149\n12.6\n74\n5\n3\n\n\n4\n18\n313\n11.5\n62\n5\n4\n\n\n5\nNA\nNA\n14.3\n56\n5\n5\n\n\n6\n28\nNA\n14.9\n66\n5\n6\n\n\n\n\n\n\nFALSE : 포함 안하고 저장\n\n\nwrite.csv(airquality_data, file = \"airquality_new.csv\", row.names = FALSE)\n\n\n\n\n\n\nOzone\nSolar.R\nWind\nTemp\nMonth\nDay\n\n\n\n\n41\n190\n7.4\n67\n5\n1\n\n\n36\n118\n8.0\n72\n5\n2\n\n\n12\n149\n12.6\n74\n5\n3\n\n\n18\n313\n11.5\n62\n5\n4\n\n\nNA\nNA\n14.3\n56\n5\n5\n\n\n28\nNA\n14.9\n66\n5\n6"
+  },
+  {
+    "objectID": "posts/1024_pt4.html#데이터-저장",
+    "href": "posts/1024_pt4.html#데이터-저장",
+    "title": "PT.4 - 데이터 불러오기, 저장하기",
+    "section": "",
+    "text": "airquality : R 기본 데이터셋\nairquality_data라는 변수명에 할당 후 저장하기\nwrite.csv()함수 사용 저장\nrow.names\n\nTRUE : 첫째 열(1,2,3,4…) 값을 포함해서 저장, X라는 열이 포함되는걸 볼 수 있음\n\n\nairquality_data &lt;- airquality\n\nwrite.csv(airquality_data, file = \"airquality_new.csv\")\n\n\n\n\n\n\nX\nOzone\nSolar.R\nWind\nTemp\nMonth\nDay\n\n\n\n\n1\n41\n190\n7.4\n67\n5\n1\n\n\n2\n36\n118\n8.0\n72\n5\n2\n\n\n3\n12\n149\n12.6\n74\n5\n3\n\n\n4\n18\n313\n11.5\n62\n5\n4\n\n\n5\nNA\nNA\n14.3\n56\n5\n5\n\n\n6\n28\nNA\n14.9\n66\n5\n6\n\n\n\n\n\n\nFALSE : 포함 안하고 저장\n\n\nwrite.csv(airquality_data, file = \"airquality_new.csv\", row.names = FALSE)\n\n\n\n\n\n\nOzone\nSolar.R\nWind\nTemp\nMonth\nDay\n\n\n\n\n41\n190\n7.4\n67\n5\n1\n\n\n36\n118\n8.0\n72\n5\n2\n\n\n12\n149\n12.6\n74\n5\n3\n\n\n18\n313\n11.5\n62\n5\n4\n\n\nNA\nNA\n14.3\n56\n5\n5\n\n\n28\nNA\n14.9\n66\n5\n6"
+  },
+  {
+    "objectID": "posts/1024_pt4.html#데이터-읽어오기",
+    "href": "posts/1024_pt4.html#데이터-읽어오기",
+    "title": "PT.3 - 데이터 불러오기, 저장하기",
+    "section": "데이터 읽어오기",
+    "text": "데이터 읽어오기\nread.csv()함수를 통해 읽어옴\n주요 인코딩\n\nutf-8\ncp949 (한글)\neuc-kr (한글)\n\n\nread.csv(\"경로\", fileEncoding = \"인코딩\")\n\n\ndata &lt;- read.csv(\"airquality_new.csv\")\n\nhead(data)\n\n  Ozone Solar.R Wind Temp Month Day\n1    41     190  7.4   67     5   1\n2    36     118  8.0   72     5   2\n3    12     149 12.6   74     5   3\n4    18     313 11.5   62     5   4\n5    NA      NA 14.3   56     5   5\n6    28      NA 14.9   66     5   6"
+  },
+  {
+    "objectID": "posts/1024_pt4.html#데이터-불러오기",
+    "href": "posts/1024_pt4.html#데이터-불러오기",
+    "title": "PT.4 - 데이터 불러오기, 저장하기",
+    "section": "데이터 불러오기",
+    "text": "데이터 불러오기\nread.csv()함수를 통해 읽어옴\n데이터 불러오기가 안되면\n\n경로를 잘못 입력했거나\n/ \\ 슬래시의 방향이 반대거나\n인코딩을 바꾸어보면 된다.\n\n주요 인코딩\n\nutf-8\ncp949 (한글)\neuc-kr (한글)\n\n\nread.csv(\"경로\", fileEncoding = \"인코딩\")\n\n\ndata &lt;- read.csv(\"airquality_new.csv\")\n\nhead(data)\n\n  Ozone Solar.R Wind Temp Month Day\n1    41     190  7.4   67     5   1\n2    36     118  8.0   72     5   2\n3    12     149 12.6   74     5   3\n4    18     313 11.5   62     5   4\n5    NA      NA 14.3   56     5   5\n6    28      NA 14.9   66     5   6"
   }
 ]

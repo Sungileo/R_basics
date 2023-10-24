@@ -1,0 +1,14 @@
+{
+  "hash": "d2210f9bac91413a33391a29f125e67b",
+  "result": {
+    "markdown": "---\ntitle: \"PT.4 - 데이터 불러오기, 저장하기\"\ndescription: \"2023-2학기 튜터링\"\nauthor: \"Sungil Park\"\ndate: \"2023/10/24\"\n---\n\n\n\n\n## 데이터 저장\n\n`airquality` : R 기본 데이터셋\n\n`airquality_data`라는 변수명에 할당 후 저장하기\n\n`write.csv()`함수 사용 저장\n\n**row.names**\n\n  - TRUE : 첫째 열(1,2,3,4...) 값을 포함해서 저장, `X`라는 열이 포함되는걸 볼 수 있음\n\n\n::: {.cell}\n\n```{.r .cell-code}\nairquality_data <- airquality\n\nwrite.csv(airquality_data, file = \"airquality_new.csv\")\n```\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n|  X| Ozone| Solar.R| Wind| Temp| Month| Day|\n|--:|-----:|-------:|----:|----:|-----:|---:|\n|  1|    41|     190|  7.4|   67|     5|   1|\n|  2|    36|     118|  8.0|   72|     5|   2|\n|  3|    12|     149| 12.6|   74|     5|   3|\n|  4|    18|     313| 11.5|   62|     5|   4|\n|  5|    NA|      NA| 14.3|   56|     5|   5|\n|  6|    28|      NA| 14.9|   66|     5|   6|\n:::\n:::\n\n\n  \n  - FALSE : 포함 안하고 저장\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nwrite.csv(airquality_data, file = \"airquality_new.csv\", row.names = FALSE)\n```\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n| Ozone| Solar.R| Wind| Temp| Month| Day|\n|-----:|-------:|----:|----:|-----:|---:|\n|    41|     190|  7.4|   67|     5|   1|\n|    36|     118|  8.0|   72|     5|   2|\n|    12|     149| 12.6|   74|     5|   3|\n|    18|     313| 11.5|   62|     5|   4|\n|    NA|      NA| 14.3|   56|     5|   5|\n|    28|      NA| 14.9|   66|     5|   6|\n:::\n:::\n\n\n## 데이터 불러오기\n\n`read.csv()`함수를 통해 읽어옴\n \n데이터 불러오기가 안되면 \n  \n  - 경로를 잘못 입력했거나\n  \n  - `/` `\\` 슬래시의 방향이 반대거나\n  \n  - 인코딩을 바꾸어보면 된다.\n \n \n\n주요 인코딩\n\n - utf-8\n \n - cp949    (한글)\n \n - euc-kr   (한글)\n\n\n::: {.cell}\n\n```{.r .cell-code}\nread.csv(\"경로\", fileEncoding = \"인코딩\")\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\ndata <- read.csv(\"airquality_new.csv\")\n\nhead(data)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n  Ozone Solar.R Wind Temp Month Day\n1    41     190  7.4   67     5   1\n2    36     118  8.0   72     5   2\n3    12     149 12.6   74     5   3\n4    18     313 11.5   62     5   4\n5    NA      NA 14.3   56     5   5\n6    28      NA 14.9   66     5   6\n```\n:::\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
