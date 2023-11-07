@@ -1,0 +1,213 @@
+---
+title: "PT.6 - 조건문"
+description: "2023-2학기 튜터링"
+author: "Sungil Park"
+date: "2023/11/07"
+---
+
+```{r, include=FALSE}
+rm(list = ls())
+library(dplyr)
+```
+
+## 조건문
+
+###  - if 문
+
+---
+
+**if**(조건) { <br> &nbsp; &nbsp; `조건에 맞으면 할거` <br> } **else** { <br> &nbsp; &nbsp; `조건에 맞지 않으면 할거` <br> }
+
+###  - else if 문
+
+---
+
+
+**if**(조건) { <br> &nbsp; &nbsp; `조건에 맞으면 할거` <br> } **else if**(조건2) { <br> &nbsp; &nbsp; `조건1에 안맞고, 조건2에 맞으면 할거` <br> } **else** { <br> &nbsp; &nbsp; `조건에 맞지 않으면 할거` <br> }
+
+
+### 예시
+
+---
+
+
+```{r}
+x <- 10
+
+if (x>0) {
+  print("양수입니다.")
+} else {
+  print("음수입니다.")
+}
+```
+
+
+```{r}
+x <- -10
+
+if(x>0){
+  print("양수입니다.")
+} else if(x<0) {
+  print("음수입니다.")
+} else {
+  print("0입니다.")
+}
+```
+
+
+```{r}
+x <- 10
+
+if (x>0) {
+  a <- 1
+  b <- 1
+} else {
+  a <- 0
+  b <- 0
+}
+
+a
+b
+```
+
+
+```{r}
+x <- 45
+
+if (x>=80) {
+  a <- "A"
+} else if (x>=60 & x<80) {
+  a <- "B"
+} else if (x>=40 & x<60) {
+  a <- "C"
+} else {
+  a <- "F"
+}
+
+a
+```
+
+
+### `x`가 여러 값을 가진 벡터이므로 실행 안됨
+
+ - 실행하려면 반복문으로 값을 하나하나 뽑아서 적용
+ 
+ - `ifelse()` 함수 사용
+
+```{r, eval=FALSE}
+x <- c(65,55,95,40,85,75,77)
+
+if (x>=80) {
+  a <- "A"
+} else if (x>=60 & x<80) {
+  a <- "B"
+} else if (x>=40 & x<60) {
+  a <- "C" 
+} else {
+  a <- "F"
+}
+
+a
+```
+
+
+## `ifelse()`
+
+ifelse(조건식, 참인 경우 실행할 코드, 거짓일 경우 실행할 코드)
+
+```{r}
+x <- -10
+ifelse(x>0, "양수입니다.", "음수입니다.")
+
+x <- c(10, -5, 0)
+ifelse(x > 0, "양수입니다.", "음수입니다.")
+```
+
+### 계단식 ifelse()도 가능
+
+```{r}
+x <- c(65,55,95,40,85,75,77)
+ifelse(x>=80, "A", 
+       ifelse(x>=60, "B", 
+              ifelse(x>=40, "C", "F")))
+```
+
+----
+## 문제
+
+빅데이터응용학과에 10명의 학생이 중간고사 시험을 봤습니다. 10명의 성적은 아래와 같습니다.
+
+45,55,65,75,86,74,67,98,50,66
+
+```{r}
+mid_exam <-c(45,55,65,75,86,74,67,98,50,66)
+```
+
+### 1) 중간고사 평균 성적을 계산하세요.
+
+```{r}
+mean(mid_exam)
+```
+
+### 2) 중간고사 중간값을 찾으세요.
+
+```{r}
+median(mid_exam)
+```
+
+
+### 3) 중간고사 최고 성적은 몇점인가요.
+
+```{r}
+max(mid_exam)
+```
+
+### 4) 중간고사 성적을 분류하시오 
+
+ - 90점 이상은 A학점 
+ 
+ - 80점 이상은 B학점
+ - 70점 이상은 C학점
+ - 60점 이상은 D학점
+ - 나머지는 F학점
+ 
+ 해당 문제를 Code를 활용하여 풀어보세요.(ifelse문 활용)
+
+```{r}
+ifelse(mid_exam >= 90, "A", 
+       ifelse(mid_exam >= 80, "B",
+              ifelse(mid_exam >= 70, "C", 
+                     ifelse(mid_exam >= 60, "D","F"))))
+
+
+```
+
+ - 반복문을 사용해서 하는 방법 (비추, `ifelse()`함수 쓰셈)
+
+```{r}
+mid_exam <-c(45,55,65,75,86,74,67,98,50,66)
+a <- character(length(mid_exam))
+
+for (i in 1:length(mid_exam)) {
+  if (mid_exam[i] >= 90) {
+    a[i] <- "A"
+  } else if (mid_exam[i] >= 80 & mid_exam[i] < 90) {
+    a[i] <- "B"
+  } else if (mid_exam[i] >= 70 & mid_exam[i] < 80) {
+    a[i] <- "C"
+  } else if (mid_exam[i] >= 60 & mid_exam[i] < 70) {
+    a[i] <- "D"
+  } else {
+    a[i] <- "F"
+  }
+}
+
+a
+```
+
+
+
+
+
+
+

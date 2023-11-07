@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "2023-2학기 R 기초 튜터링",
     "section": "",
-    "text": "PT.5 - 중간고사\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nOct 31, 2023\n\n\nSungil Park\n\n\n\n\n\n\n  \n\n\n\n\nPT.4 - 데이터 불러오기, 저장하기\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nOct 24, 2023\n\n\nSungil Park\n\n\n\n\n\n\n  \n\n\n\n\nPT.3 - 데이터프레임, subset, 행렬의 연산\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nOct 17, 2023\n\n\nSungil Park\n\n\n\n\n\n\n  \n\n\n\n\nPT.2 - 벡터, 리스트, 팩터, 행렬\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nOct 10, 2023\n\n\nSungil Park\n\n\n\n\n\n\n  \n\n\n\n\nPT.1 - 설치 & R에 대해\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nSep 14, 2023\n\n\nSungil Park\n\n\n\n\n\n\nNo matching items"
+    "text": "PT.6 - 조건문\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nNov 7, 2023\n\n\nSungil Park\n\n\n\n\n\n\n  \n\n\n\n\nPT.5 - 중간고사\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nOct 31, 2023\n\n\nSungil Park\n\n\n\n\n\n\n  \n\n\n\n\nPT.4 - 데이터 불러오기, 저장하기\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nOct 24, 2023\n\n\nSungil Park\n\n\n\n\n\n\n  \n\n\n\n\nPT.3 - 데이터프레임, subset, 행렬의 연산\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nOct 17, 2023\n\n\nSungil Park\n\n\n\n\n\n\n  \n\n\n\n\nPT.2 - 벡터, 리스트, 팩터, 행렬\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nOct 10, 2023\n\n\nSungil Park\n\n\n\n\n\n\n  \n\n\n\n\nPT.1 - 설치 & R에 대해\n\n\n\n\n\n2023-2학기 튜터링\n\n\n\n\n\n\nSep 14, 2023\n\n\nSungil Park\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -208,5 +208,33 @@
     "title": "PT.5 - 중간고사",
     "section": "8. ( : Travel_Plan.csv) 파일명 제리 스티븐슨 은 (Jerry Stevenson) 여행사의 매니저이다.",
     "text": "8. ( : Travel_Plan.csv) 파일명 제리 스티븐슨 은 (Jerry Stevenson) 여행사의 매니저이다.\n그는 고객이 내년 안에 여행할 것인지 여부를 예측할 수 있는 모형을 구축하고자 한다 그는 . 다음과 같은 변수를 포함하는 데이터셋을 수집했다 :\n\n대학학위를 가지고 있는지 (College)\n신용카드를 가지고 있는지 (Credit-Card)\n음식에 대한 연간 가계지출 달러 (FoodSpend)\n연소득 달러 고객이 (Income)\n내년 안에 여행할 계획이 있는지 여행계획 (TravelPlan : 1 = 있음, 0 = 없음)\n\n데이터의 일부를 아래 표에 보여준다\n\na) Travel_Plan.csv R 파일 를 로 불러와서 변수 df 로 저장하세요\n\ndf &lt;- read.csv(\"Travel_Plan.csv\")\n\n\n\nb) df 변수 의 속성을 확인하세요. 불러온 데이터는 어떤 형테의 자료인가요 매트릭스인가요, 데이터프레임 인가요\n(반드시 속성을 확인하는 함수 사용하세요)\n\nis.matrix(df)\nis.data.frame(df)\n\n\n\nc) 50,000 연소득이 달러 이상인 사람은 몇 명인가요 점\n\nnrow(subset(df,Income &gt; 50000))\n\n\n\nd) (Credit-Card) 신용카드 가 있는 사람 중에 연소득이 60,000 달러 이상인 사람은 몇명인가요\n\nnrow(subset(df,CreditCard == \"Yes\" & Income &gt; 60000))\n\n\n\ne) 여행계획이 있는 사람들의(TravelPlan : 1) 연소득 평균값과 여행 계획이 없는 사람들의(TravelPlan : 0) 연소득 평균값을 계산한 다음 비교하세요\n여행계획이 있는 사람의 연소득 평균값이 얼마 더 높은가요\n\nmean(subset(df,TravelPlan == 1)$Income)\nmean(subset(df,TravelPlan == 0)$Income)\n\n\n\nf) (Income)연소득을 기준으로 내림차순으로 정렬한 다음 연소득 상위 100명의 데이터를추출하세요\n(변수명 : df_100 ) 추출된 데이터를 Travel_Plan_100.csv 이름으로 저장하세요\n\ndf_100 &lt;- head(df[order(df$Income, decreasing = TRUE),])\n\nwrite.csv(df_100, \"df_100.csv\")"
+  },
+  {
+    "objectID": "posts/1107_.html",
+    "href": "posts/1107_.html",
+    "title": "PT.6 - 조건문",
+    "section": "",
+    "text": "if(조건) {      조건에 맞으면 할거  } else {      조건에 맞지 않으면 할거  }\n\n\n\n\nif(조건) {      조건에 맞으면 할거  } else if(조건2) {      조건1에 안맞고, 조건2에 맞으면 할거  } else {      조건에 맞지 않으면 할거  }\n\n\n\n\n\nx &lt;- 10\n\nif (x&gt;0) {\n  print(\"양수입니다.\")\n} else {\n  print(\"음수입니다.\")\n}\n\n[1] \"양수입니다.\"\n\n\n\nx &lt;- -10\n\nif(x&gt;0){\n  print(\"양수입니다.\")\n} else if(x&lt;0) {\n  print(\"음수입니다.\")\n} else {\n  print(\"0입니다.\")\n}\n\n[1] \"음수입니다.\"\n\n\n\nx &lt;- 10\n\nif (x&gt;0) {\n  a &lt;- 1\n  b &lt;- 1\n} else {\n  a &lt;- 0\n  b &lt;- 0\n}\n\na\n\n[1] 1\n\nb\n\n[1] 1\n\n\n\nx &lt;- 45\n\nif (x&gt;=80) {\n  a &lt;- \"A\"\n} else if (x&gt;=60 & x&lt;80) {\n  a &lt;- \"B\"\n} else if (x&gt;=40 & x&lt;60) {\n  a &lt;- \"C\"\n} else {\n  a &lt;- \"F\"\n}\n\na\n\n[1] \"C\"\n\n\n\n\n\n\n실행하려면 반복문으로 값을 하나하나 뽑아서 적용\nifelse() 함수 사용\n\n\nx &lt;- c(65,55,95,40,85,75,77)\n\nif (x&gt;=80) {\n  a &lt;- \"A\"\n} else if (x&gt;=60 & x&lt;80) {\n  a &lt;- \"B\"\n} else if (x&gt;=40 & x&lt;60) {\n  a &lt;- \"C\" \n} else {\n  a &lt;- \"F\"\n}\n\na"
+  },
+  {
+    "objectID": "posts/1107_.html#조건문",
+    "href": "posts/1107_.html#조건문",
+    "title": "PT.6 - 조건문",
+    "section": "",
+    "text": "if(조건) {      조건에 맞으면 할거  } else {      조건에 맞지 않으면 할거  }\n\n\n\n\nif(조건) {      조건에 맞으면 할거  } else if(조건2) {      조건1에 안맞고, 조건2에 맞으면 할거  } else {      조건에 맞지 않으면 할거  }\n\n\n\n\n\nx &lt;- 10\n\nif (x&gt;0) {\n  print(\"양수입니다.\")\n} else {\n  print(\"음수입니다.\")\n}\n\n[1] \"양수입니다.\"\n\n\n\nx &lt;- -10\n\nif(x&gt;0){\n  print(\"양수입니다.\")\n} else if(x&lt;0) {\n  print(\"음수입니다.\")\n} else {\n  print(\"0입니다.\")\n}\n\n[1] \"음수입니다.\"\n\n\n\nx &lt;- 10\n\nif (x&gt;0) {\n  a &lt;- 1\n  b &lt;- 1\n} else {\n  a &lt;- 0\n  b &lt;- 0\n}\n\na\n\n[1] 1\n\nb\n\n[1] 1\n\n\n\nx &lt;- 45\n\nif (x&gt;=80) {\n  a &lt;- \"A\"\n} else if (x&gt;=60 & x&lt;80) {\n  a &lt;- \"B\"\n} else if (x&gt;=40 & x&lt;60) {\n  a &lt;- \"C\"\n} else {\n  a &lt;- \"F\"\n}\n\na\n\n[1] \"C\"\n\n\n\n\n\n\n실행하려면 반복문으로 값을 하나하나 뽑아서 적용\nifelse() 함수 사용\n\n\nx &lt;- c(65,55,95,40,85,75,77)\n\nif (x&gt;=80) {\n  a &lt;- \"A\"\n} else if (x&gt;=60 & x&lt;80) {\n  a &lt;- \"B\"\n} else if (x&gt;=40 & x&lt;60) {\n  a &lt;- \"C\" \n} else {\n  a &lt;- \"F\"\n}\n\na"
+  },
+  {
+    "objectID": "posts/1107_.html#ifelse",
+    "href": "posts/1107_.html#ifelse",
+    "title": "PT.6 - 조건문",
+    "section": "ifelse()",
+    "text": "ifelse()\nifelse(조건식, 참인 경우 실행할 코드, 거짓일 경우 실행할 코드)\n\nx &lt;- -10\nifelse(x&gt;0, \"양수입니다.\", \"음수입니다.\")\n\n[1] \"음수입니다.\"\n\nx &lt;- c(10, -5, 0)\nifelse(x &gt; 0, \"양수입니다.\", \"음수입니다.\")\n\n[1] \"양수입니다.\" \"음수입니다.\" \"음수입니다.\"\n\n\n\n계단식 ifelse()도 가능\n\nx &lt;- c(65,55,95,40,85,75,77)\nifelse(x&gt;=80, \"A\", \n       ifelse(x&gt;=60, \"B\", \n              ifelse(x&gt;=40, \"C\", \"F\")))\n\n[1] \"B\" \"C\" \"A\" \"C\" \"A\" \"B\" \"B\""
+  },
+  {
+    "objectID": "posts/1107_.html#문제",
+    "href": "posts/1107_.html#문제",
+    "title": "PT.6 - 조건문",
+    "section": "문제",
+    "text": "문제\n빅데이터응용학과에 10명의 학생이 중간고사 시험을 봤습니다. 10명의 성적은 아래와 같습니다.\n45,55,65,75,86,74,67,98,50,66\n\nmid_exam &lt;-c(45,55,65,75,86,74,67,98,50,66)\n\n\n1) 중간고사 평균 성적을 계산하세요.\n\nmean(mid_exam)\n\n[1] 68.1\n\n\n\n\n2) 중간고사 중간값을 찾으세요.\n\nmedian(mid_exam)\n\n[1] 66.5\n\n\n\n\n3) 중간고사 최고 성적은 몇점인가요.\n\nmax(mid_exam)\n\n[1] 98\n\n\n\n\n4) 중간고사 성적을 분류하시오\n\n90점 이상은 A학점\n80점 이상은 B학점\n70점 이상은 C학점\n60점 이상은 D학점\n나머지는 F학점\n\n해당 문제를 Code를 활용하여 풀어보세요.(ifelse문 활용)\n\nifelse(mid_exam &gt;= 90, \"A\", \n       ifelse(mid_exam &gt;= 80, \"B\",\n              ifelse(mid_exam &gt;= 70, \"C\", \n                     ifelse(mid_exam &gt;= 60, \"D\",\"F\"))))\n\n [1] \"F\" \"F\" \"D\" \"C\" \"B\" \"C\" \"D\" \"A\" \"F\" \"D\"\n\n\n\n반복문을 사용해서 하는 방법 (비추, ifelse()함수 쓰셈)\n\n\nmid_exam &lt;-c(45,55,65,75,86,74,67,98,50,66)\na &lt;- character(length(mid_exam))\n\nfor (i in 1:length(mid_exam)) {\n  if (mid_exam[i] &gt;= 90) {\n    a[i] &lt;- \"A\"\n  } else if (mid_exam[i] &gt;= 80 & mid_exam[i] &lt; 90) {\n    a[i] &lt;- \"B\"\n  } else if (mid_exam[i] &gt;= 70 & mid_exam[i] &lt; 80) {\n    a[i] &lt;- \"C\"\n  } else if (mid_exam[i] &gt;= 60 & mid_exam[i] &lt; 70) {\n    a[i] &lt;- \"D\"\n  } else {\n    a[i] &lt;- \"F\"\n  }\n}\n\na\n\n [1] \"F\" \"F\" \"D\" \"C\" \"B\" \"C\" \"D\" \"A\" \"F\" \"D\""
   }
 ]
