@@ -1,8 +1,8 @@
 ---
-title: "PT.6 - 간단한 데이터 탐색 & 시각화"
+title: "PT.9 - 간단한 데이터 탐색 & 시각화"
 description: "2023-2학기 튜터링"
 author: "Sungil Park"
-date: "2023/11/07"
+date: "2023/11/28"
 ---
 
 ```{r, include=FALSE}
