@@ -1,0 +1,260 @@
+---
+title: "PT.8 - 조건문, 반복문 복습"
+description: "2023-2학기 튜터링"
+author: "Sungil Park"
+date: "2023/11/21"
+---
+
+```{r, include=FALSE}
+rm(list = ls())
+library(dplyr)
+library(knitr)
+```
+
+## 조건문 복습 (교재)
+
+```{r}
+job.type <- 'A'
+
+if(job.type=='B'){
+  bonus <- 200
+}else{
+  bonus <- 100
+}
+print(bonus)
+```
+
+## else 생략
+
+```{r}
+job.type <- 'B'
+bonus <- 100
+if(job.type=='A'){
+  bonus <- 200  #직무유형이 A일 때 실행.
+}
+print(bonus)
+```
+
+## 다중 if-else문
+
+```{r}
+score <- 85
+
+if(score>90){
+  grade <- 'A'
+}else if(score>80){
+  grade <- 'B'
+}else if(score>70){
+  grade <- 'C'
+}else if(score>60){
+  grade <- 'D'
+}else{
+  grade <- 'F'
+}
+print(grade)
+```
+
+## 조건문에서 논리 연산자의 사용
+
+```{r}
+a <- 10
+b <- 2
+
+if(a>5&b>5){
+  print(a+b)
+}else{
+  print("조건 미충족")
+}
+
+if(a>5|b>30){
+  print(a*b)
+}else{
+  print("조건 미충족")
+}
+```
+
+
+```{r}
+a <- 10
+b <- 20
+
+if(a > 5 & b > 5){
+  c = a + b
+}else if(a > 5 | b > 30){
+  c = a * b
+}
+print(c)
+```
+
+## ifelse문
+
+```{r}
+a <- 10
+b <- 20
+
+if(a>b){
+  c <- a
+}else{
+  c <- b
+}
+print(c)
+```
+
+
+```{r}
+a <- 10 
+b <- 20
+c <- ifelse(a>b, a, b) 
+print(c)
+```
+
+---
+
+## 반복문 이용 구구단
+
+ - `cat()` `\n` : 줄바꿈 기호(ENTER)
+
+ - `print()` `\n` : 문자열 출력
+
+```{r}
+for(i in 1:9){
+  cat('2 *', i, '=', 2*i, '\n')  #'\n'은 아래로 출력시킴.
+  cat('결과값: ', 2*i, '\n')  #'cat()'함수 = 여러 값들을 출력시킬 수 있음.
+}                           # 파이썬에서 print()함수
+```
+
+## for문 안에서 if문의 사용(시험출제!)
+
+ - 1 ~ 20 중 짝수만 출력
+
+```{r}
+for(i in 1:20){
+  if(i%%2==0){
+    print(i)
+  }
+}
+```
+
+##1~100 사이의 숫자의 합 출력
+
+```{r}
+sum <- 0
+for(i in 1:100){
+  sum <- sum + i
+}
+print(sum)
+```
+
+## iris에서 꽃잎의 길이에 따른 분류 작업
+
+```{r}
+mylabel <- c()                          # 비어 있는 벡터 선언
+
+for(i in 1:nrow(iris)){
+  if(iris$Petal.Length[i] <= 1.6){      
+    mylabel[i] <- 'L'                   # 꽃잎의 길이(Petal.Length)가 1.6 이하면 L
+  }else if(iris$Petal.Length[i] >= 5.1){
+    mylabel[i] <- 'H'                   # 꽃잎의 길이(Petal.Length)가 5.1 이상이면 H 
+  }else{                                
+    mylabel[i] <- 'M'                   # 나머지는 M
+  }
+}
+
+print(mylabel)            #mylabel벡터 출력.
+```
+
+### mylabel을 데이터프레임으로
+
+```{r}
+newds <- data.frame(iris$Petal.Length,mylabel)
+
+head(newds)
+tail(newds)
+```
+
+## while문
+
+ - `break` 반복문 실행중 조건 부합시 그만 실행하기 
+ 
+ - 1 ~ 10 까지 더하기 중 5 이상값 나오면 그만하기 (1+2+3+4+5)
+
+```{r}
+sum <- 0
+
+for(i in 1:10){
+  sum <- sum+i
+  if(i>=5){
+    break
+  }
+}
+
+sum
+```
+
+
+## 복습끝
+
+ - `next` 조건 부합시 건너뛰기
+ 
+ - i가 5,6,7,8이면 건너뛰어라 (파이썬의 continue함수와 같음)
+
+```{r}
+sum <- 0
+for(i in 1:10){
+  sum <- sum+i
+  if(i>=5 & i<=8){
+    next
+  }
+  print(c(i,sum))
+}
+
+sum
+```
+
+ - 1~10까지 더하기 중 짝수는 건너뛰기(홀수만 더해라, 1+3+5+7+9)
+
+```{r}
+sum <- 0
+for(i in 1:10){
+  if(i%%2==0){  
+    next
+  }
+  sum=sum+i
+}
+sum
+```
+
+## `apply()` 함수
+
+ -  apply(데이터, 행/열방향, 적용함수)
+
+ - 행 = 1, 열 = 2
+ 
+```{r}
+score <- data.frame(철수 = c(90, 80, 70), 
+                    영희 = c(80, 78, 89),
+                    백구 = c(22, 32, 11))
+
+row.names(score) <- c("수학", "국어", "영어")
+```
+
+
+```{r, echo=FALSE}
+kable(score)
+```
+
+
+```{r}
+apply(score,1,mean)  #행방향으로 평균값 계산
+
+apply(score,2,mean)  #열방향으로 평균값 계산
+```
+
+---
+
+```{r}
+apply(score,1,summary)  #행방향으로 summary
+
+apply(score,2,summary)  #열방향으로 summary 
+```
+

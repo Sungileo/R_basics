@@ -1,0 +1,139 @@
+---
+title: "PT.7 - 반복문"
+description: "2023-2학기 튜터링"
+author: "Sungil Park"
+date: "2023/11/14"
+---
+
+```{r, include=FALSE}
+rm(list = ls())
+library(dplyr)
+```
+
+## 반복문으로 3 배수 출력
+
+```{r}
+x <- c() #비어있는 벡터x 생성
+for (i in 1:5) {
+  j <- i*3
+  x <- c(x,j)#벡터 X에 j의 값 추가
+  }
+print(x)
+```
+
+## 반복문으로 i, x 출력 (3배수)
+
+ - cat 활용 (`print()` 사용시 `\n`은 문자열로 출력됨)
+ 
+ - `\n` : 줄바꿈 기호
+
+
+```{r}
+x <- c() 
+for (i in 1:9) {
+  j <- i*3
+  x <- c(x, i, j, "\n")
+}
+
+cat(x)
+```
+
+ - `print()` 사용시 `\n`은 문자열로 출력됨
+
+```{r}
+print(x)
+```
+
+## 반복문, 조건문 같이쓰기
+
+1,2,3,4,5 중 2로 나누었을때 나머지가 1인것 (홀수) 만 출력
+
+```{r}
+x <- c(1,2,3,4,5)
+
+for(i in x){
+  if(i%%2==1) {
+    print(i)
+  }
+}
+```
+
+1,2,3,4,5 중 2로 나누었을때 나머지가 1인것 (홀수) 만 x에 넣기
+
+```{r}
+x <- c()
+for (i in 1:5){
+  if(i%%2==1){
+    x <- c(x,i)
+  }
+}
+print(x)
+```
+
+## 반복문 안썼을때
+
+```{r}
+x <- c()
+
+i <- 1
+if(i%%2==1) {
+  x <- c(x,i)
+}
+i <- 2
+
+if(i%%2==1) {
+  x <- c(x,i)
+}
+i <- 3
+
+if(i%%2==1) {
+  x <- c(x,i)
+}
+i <- 4
+
+if(i%%2==1) {
+  x <- c(x,i)
+}
+i <- 5
+
+if(i%%2==1) {
+  x <- c(x,i)
+}
+
+print(x)
+```
+
+## 구구단
+
+```{r}
+#반복문 notion 문제 1 과제
+
+result <- data.frame()
+
+for (i in 2:9){
+  for(j in 1:9) {
+    k <- i*j
+    result_temp <- c(i,j,k)
+    result <- rbind(result,result_temp)
+  }
+}
+
+DT::datatable(result)
+```
+
+## 구구단 100단까지
+
+```{r}
+result <- data.frame()
+
+for (i in 1:100){
+  for(j in 1:19) {
+    k <- i*j
+    result_temp <- c(i,j,k)
+    result <- rbind(result,result_temp)
+  }
+}
+
+DT::datatable(result)
+```
+
